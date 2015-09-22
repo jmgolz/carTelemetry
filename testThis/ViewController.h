@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonTest;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property (weak, nonatomic) IBOutlet UIView *alignMark;
 
 @end
 
