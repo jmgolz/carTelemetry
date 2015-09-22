@@ -20,7 +20,6 @@
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
-    [self.motionManager stopAccelerometerUpdates];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,21 +31,15 @@
     self.textLabel.text = [NSString stringWithFormat:@"TESTING"];
     [self.buttonTest setTitle:@"DONE CLICKED THIS" forState:UIControlStateNormal];
 
-    //self.alignMark.transform = CGAffineTransformMakeRotation(10.0);
-    
-    
     if(self.motionManager.isAccelerometerActive == NO){
-        [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelData, NSError *error){
-            NSLog(@"x: %f, y: %f, z: %f", accelData.acceleration.x, accelData.acceleration.y, accelData.acceleration.z);
-            self.alignMark.transform = CGAffineTransformMakeRotation(atan2(accelData.acceleration.y, accelData.acceleration.x));
+        [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+        withHandler:^(CMAccelerometerData *accelData, NSError *error){
+           NSLog(@"x: %f, y: %f, z: %f", accelData.acceleration.x, accelData.acceleration.y, accelData.acceleration.z);
+           self.alignMark.transform = CGAffineTransformMakeRotation( atan2(accelData.acceleration.y, accelData.acceleration.x) );
         }];
     } else {
         [self.motionManager stopAccelerometerUpdates];
         NSLog(@"Accel Off");
     }
 }
-
-
-
-
 @end
