@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8472F84A1BB252D900EFCD7F /* jsonData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8472F8491BB252D900EFCD7F /* jsonData.plist */; settings = {ASSET_TAGS = (); }; };
 		E516C3F51BB1BFF2004D700C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F41BB1BFF2004D700C /* main.m */; };
 		E516C3F81BB1BFF2004D700C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F71BB1BFF2004D700C /* AppDelegate.m */; };
 		E516C3FB1BB1BFF2004D700C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3FA1BB1BFF2004D700C /* ViewController.m */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8472F8491BB252D900EFCD7F /* jsonData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = jsonData.plist; sourceTree = "<group>"; };
 		E516C3F01BB1BFF2004D700C /* testThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E516C3F41BB1BFF2004D700C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E516C3F61BB1BFF2004D700C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,9 +86,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8472F8461BB2507D00EFCD7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E516C3E71BB1BFF1004D700C = {
 			isa = PBXGroup;
 			children = (
+				8472F8461BB2507D00EFCD7F /* Frameworks */,
 				E516C42B1BB1CB98004D700C /* CoreMotion.framework */,
 				E516C4291BB1CB8A004D700C /* Accelerate.framework */,
 				E516C3F21BB1BFF2004D700C /* testThis */,
@@ -119,6 +129,7 @@
 				E516C4071BB1BFF2004D700C /* Info.plist */,
 				E516C3FF1BB1BFF2004D700C /* testThis.xcdatamodeld */,
 				E516C3F31BB1BFF2004D700C /* Supporting Files */,
+				8472F8491BB252D900EFCD7F /* jsonData.plist */,
 			);
 			path = testThis;
 			sourceTree = "<group>";
@@ -216,7 +227,6 @@
 				TargetAttributes = {
 					E516C3EF1BB1BFF1004D700C = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 32HK23ELWJ;
 					};
 					E516C40B1BB1BFF2004D700C = {
 						CreatedOnToolsVersion = 7.0;
@@ -253,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8472F84A1BB252D900EFCD7F /* jsonData.plist in Resources */,
 				E516C4061BB1BFF2004D700C /* LaunchScreen.storyboard in Resources */,
 				E516C4031BB1BFF2004D700C /* Assets.xcassets in Resources */,
 				E516C3FE1BB1BFF2004D700C /* Main.storyboard in Resources */,
@@ -424,6 +435,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = testThis/Info.plist;
@@ -439,6 +452,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = testThis/Info.plist;
@@ -517,6 +532,7 @@
 				E516C4221BB1BFF2004D700C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E516C4231BB1BFF2004D700C /* Build configuration list for PBXNativeTarget "testThisTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +541,7 @@
 				E516C4251BB1BFF2004D700C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E516C4261BB1BFF2004D700C /* Build configuration list for PBXNativeTarget "testThisUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +550,7 @@
 				E516C4281BB1BFF2004D700C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -20,6 +20,18 @@
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
+    
+    self.dictRoot = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"jsonData" ofType:@"plist"]];
+    
+    self.jsonExample = [NSString stringWithString:[self.dictRoot objectForKey:@"jsonStringData"]];
+    
+    //test object from json data
+    NSError *error = nil;
+    id jsonobj = [NSJSONSerialization JSONObjectWithData:[self.jsonExample dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    
+    //NSLog(@"Log data: %@", self.jsonExample);
+    NSLog(@"Log data: %@", [jsonobj valueForKey:@"name"]);
+
 }
 
 - (void)didReceiveMemoryWarning {

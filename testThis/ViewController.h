@@ -13,8 +13,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonTest;
+
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (weak, nonatomic) IBOutlet UIView *alignMark;
+
+@property (weak, nonatomic) NSString *jsonExample;
+@property (weak, nonatomic) NSDictionary *dictRoot;
 
 @end
 
