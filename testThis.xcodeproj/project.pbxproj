@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8472F84A1BB252D900EFCD7F /* jsonData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8472F8491BB252D900EFCD7F /* jsonData.plist */; settings = {ASSET_TAGS = (); }; };
+		848564B71BB37D4B00CC3BDD /* SecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848564B61BB37D4B00CC3BDD /* SecondController.m */; settings = {ASSET_TAGS = (); }; };
 		E516C3F51BB1BFF2004D700C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F41BB1BFF2004D700C /* main.m */; };
 		E516C3F81BB1BFF2004D700C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F71BB1BFF2004D700C /* AppDelegate.m */; };
 		E516C3FB1BB1BFF2004D700C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3FA1BB1BFF2004D700C /* ViewController.m */; };
@@ -39,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		8472F8491BB252D900EFCD7F /* jsonData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = jsonData.plist; sourceTree = "<group>"; };
+		848564B51BB37D4B00CC3BDD /* SecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondController.h; sourceTree = "<group>"; };
+		848564B61BB37D4B00CC3BDD /* SecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondController.m; sourceTree = "<group>"; };
 		E516C3F01BB1BFF2004D700C /* testThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E516C3F41BB1BFF2004D700C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E516C3F61BB1BFF2004D700C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				E516C3FF1BB1BFF2004D700C /* testThis.xcdatamodeld */,
 				E516C3F31BB1BFF2004D700C /* Supporting Files */,
 				8472F8491BB252D900EFCD7F /* jsonData.plist */,
+				848564B51BB37D4B00CC3BDD /* SecondController.h */,
+				848564B61BB37D4B00CC3BDD /* SecondController.m */,
 			);
 			path = testThis;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			files = (
 				E516C3FB1BB1BFF2004D700C /* ViewController.m in Sources */,
 				E516C4011BB1BFF2004D700C /* testThis.xcdatamodeld in Sources */,
+				848564B71BB37D4B00CC3BDD /* SecondController.m in Sources */,
 				E516C3F81BB1BFF2004D700C /* AppDelegate.m in Sources */,
 				E516C3F51BB1BFF2004D700C /* main.m in Sources */,
 			);

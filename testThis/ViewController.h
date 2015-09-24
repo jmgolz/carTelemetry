@@ -20,5 +20,7 @@
 @property (weak, nonatomic) NSString *jsonExample;
 @property (weak, nonatomic) NSDictionary *dictRoot;
 
+@property (strong, nonatomic) NSMutableArray *jsonObjectArrayFirstController;
+
 @end
 

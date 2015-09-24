@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzK-Im-bDQ">
@@ -34,9 +34,17 @@
                                 <rect key="frame" x="187" y="146" width="40" height="169"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-ob-DUE">
+                                <rect key="frame" x="123" y="534" width="168" height="30"/>
+                                <state key="normal" title="Move to next view"/>
+                                <connections>
+                                    <segue destination="ibm-O7-dAi" kind="show" identifier="secondViewSegue" id="cDd-LU-3VU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="alignMark" destination="dUA-Ne-wuL" id="OnS-JP-QwN"/>
                         <outlet property="buttonTest" destination="akN-lj-FoW" id="wLR-hz-UiK"/>
@@ -45,7 +53,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="479"/>
+            <point key="canvasLocation" x="-110" y="507"/>
+        </scene>
+        <!--Second Controller-->
+        <scene sceneID="Npp-yo-bh3">
+            <objects>
+                <viewController id="ibm-O7-dAi" customClass="SecondController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MUe-U6-ZGH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z31-AH-fkh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hFH-Yj-E9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I should change..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8h-WO-eQV">
+                                <rect key="frame" x="85" y="67" width="235" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xna-Tf-ahm">
+                                <rect key="frame" x="122" y="348" width="155" height="30"/>
+                                <state key="normal" title="Get Data"/>
+                                <connections>
+                                    <action selector="getData:" destination="ibm-O7-dAi" eventType="touchUpInside" id="h6N-Pl-jaa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="secondControllerTextLabel" destination="M8h-WO-eQV" id="F9A-NT-rMH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="102-Ep-5HW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="j8P-rW-z3x">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" id="tZG-uH-ixq"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="389" y="507"/>
         </scene>
     </scenes>
 </document>
