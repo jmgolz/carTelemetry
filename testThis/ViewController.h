@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buttonTest;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) NSDictionary *dictRoot;
 
 @property (strong, nonatomic) NSMutableArray *jsonObjectArrayFirstController;
+@property CLLocationManager *locationManager;
 
 @end
 

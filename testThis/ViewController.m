@@ -34,6 +34,12 @@
     
     //NSLog(@"Log data: %@", self.jsonExample);
     NSLog(@"Log data: %@", [self.jsonObjectArrayFirstController valueForKey:@"name"]);
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.delegate = self;
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
 
 }
 
@@ -50,6 +56,7 @@
     
     secondController.stringSecondController = @"THIS WORKED";
     secondController.jsonDataArray = self.jsonObjectArrayFirstController;
+    [self.locationManager stopUpdatingLocation];
 }
 
 
@@ -67,5 +74,28 @@
         [self.motionManager stopAccelerometerUpdates];
         NSLog(@"Accel Off");
     }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLLocation *crnLoc = [locations lastObject];
+    NSLog(@"OBJ: %@", [crnLoc debugDescription]);
+    
+    //Can we get zip code?
+    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+    [geocoder reverseGeocodeLocation:crnLoc completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        NSLog(@"ZIP CODE: %@", [[[placemarks objectAtIndex:0] addressDictionary] objectForKey:@"ZIP"]);
+        
+        NSLog(@"ZIP CODE: %@", [[[placemarks objectAtIndex:0] addressDictionary] debugDescription]);
+    }];
+    
+    //Put here to get single read.
+    //[self.locationManager stopUpdatingLocation];
+    
 }
 @end
