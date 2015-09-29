@@ -24,5 +24,12 @@
 @property (strong, nonatomic) NSMutableArray *jsonObjectArrayFirstController;
 @property CLLocationManager *locationManager;
 
+@property double cyclesCount;
+@property float gyroReadingAccumulator;
+
+-(void)stopAllAppServices:(NSNotification *)notification;
+-(void)startAppServices:(NSNotification *)notification;
+- (IBAction)testAction:(id)sender;
+
 @end
 
