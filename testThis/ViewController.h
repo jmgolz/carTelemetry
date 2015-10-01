@@ -46,13 +46,23 @@
 @property double averageLongitudinalGs;
 @property double maxLongitudinalGs;
 
+@property double averageSpeed;
+@property double averageSpeedAccumulator;
+@property double maxSpeed;
+
 
 //Misc
-@property int cycles;
+@property int numCyclesTelemetryReadings;
+@property int numCyclesGpsReadings;
+@property int isGpsOn;
 
 -(void)stopAllAppServices:(NSNotification *)notification;
 -(void)startAppServices:(NSNotification *)notification;
+
 - (IBAction)startCarTelemetry:(id)sender;
+- (IBAction)startGpsData:(id)sender;
+
+
 
 @end
 

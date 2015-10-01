@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SecondController.h"
+
 @interface ViewController ()
 
 @end
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .1;
@@ -24,11 +24,9 @@
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     
-    [self.locationManager requestWhenInUseAuthorization];
-    //[self.locationManager startUpdatingLocation];
-    self.cycles = 1;
-    
-
+    self.numCyclesGpsReadings = 1;
+    self.numCyclesTelemetryReadings = 1;
+    self.isGpsOn = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,26 +58,38 @@
 
         //Record Averages
         self.averageCorneringGsAccumulator += fabs(motion.userAcceleration.x);
-        self.averageCorneringGs = (self.averageCorneringGsAccumulator / self.cycles);
+        self.averageCorneringGs = (self.averageCorneringGsAccumulator / self.numCyclesTelemetryReadings);
             
         //Present values
-        self.labelCorneringGs.text = [NSString stringWithFormat:@"%.02f",fabs(motion.userAcceleration.x)];
-        self.labelMaxCorneringGs.text = [NSString stringWithFormat:@"%.02f", self.maxCorneringGs];
-        self.labelAvgCorneringGs.text = [NSString stringWithFormat:@"%0.02f", self.averageCorneringGs];
+        self.labelCorneringGs.text = [NSString stringWithFormat:@"%.2f",fabs(motion.userAcceleration.x)];
+        self.labelMaxCorneringGs.text = [NSString stringWithFormat:@"%.2f", self.maxCorneringGs];
+        self.labelAvgCorneringGs.text = [NSString stringWithFormat:@"%0.2f", self.averageCorneringGs];
             
-        self.labelLongitudinalGs.text = [NSString stringWithFormat:@"%.02f",fabs(motion.userAcceleration.z)];
+        self.labelLongitudinalGs.text = [NSString stringWithFormat:@"%.2f",fabs(motion.userAcceleration.z)];
         
         //Increment cycle counter for averages computation®
-        self.cycles++;
-        
-            
+        self.numCyclesTelemetryReadings++;
 //            self.alignMark.transform = CGAffineTransformMakeRotation( atan2(motion.gravity.y, motion.gravity.x) );
         }];
     } else {
         [self.motionManager stopDeviceMotionUpdates];
-        NSLog(@"Accel Off");
         [UIApplication sharedApplication].idleTimerDisabled = NO;
+        [self.buttonStartCarTelemetry setTitle:@"Start Car Telemetry" forState:UIControlStateNormal];
 
+    }
+}
+
+- (IBAction)startGpsData:(id)sender {
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    if (self.isGpsOn == NO) {
+        [self.locationManager startUpdatingLocation];
+        [self.buttonStartGpsRecording setTitle:@"Stop GPS Data" forState:UIControlStateNormal];
+        self.isGpsOn = YES;
+    } else {
+        [self.buttonStartGpsRecording setTitle:@"Start GPS Data" forState:UIControlStateNormal];
+        [self.locationManager stopUpdatingLocation];
+        self.isGpsOn = NO;
     }
 }
 
@@ -93,19 +103,22 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation *crnLoc = [locations lastObject];
-    NSLog(@"OBJ: %@", [crnLoc debugDescription]);
+   
+    //Update max speed
+    if ([self speedInKmh:crnLoc.speed] > self.maxSpeed) {
+        //self.maxSpeed = ((crnLoc.speed / 1000) * 3600 );
+        self.maxSpeed = [self speedInKmh:crnLoc.speed];
+    }
     
-    //Can we get zip code?
-    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-    [geocoder reverseGeocodeLocation:crnLoc completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        NSLog(@"ZIP CODE: %@", [[[placemarks objectAtIndex:0] addressDictionary] objectForKey:@"ZIP"]);
-        
-        NSLog(@"ZIP CODE: %@", [[[placemarks objectAtIndex:0] addressDictionary] debugDescription]);
-    }];
+    //Update average speed
+    self.averageSpeedAccumulator += [self speedInKmh:crnLoc.speed];
+    self.averageSpeed = self.averageSpeedAccumulator / self.numCyclesGpsReadings;
     
-    //Put here to get single read.
-    [self.locationManager stopUpdatingLocation];
+    self.labelSpeed.text = [NSString stringWithFormat:@"%0.1f km/h", [self speedInKmh:crnLoc.speed]];
+    self.labelMaxSpeed.text = [NSString stringWithFormat:@"%0.1f km/h", self.maxSpeed];
+    self.labelAvgSpeed.text = [NSString stringWithFormat:@"%0.1f km/h", self.averageSpeed];
     
+    self.numCyclesGpsReadings++;
 }
 
 -(void)stopAllAppServices:(NSNotification *)notification{
@@ -117,4 +130,8 @@
     
 }
 
+-(double)speedInKmh:(double)speedUnit{
+    int convertedSpeed = ((speedUnit / 1000) * 3600 );
+    return convertedSpeed;
+}
 @end

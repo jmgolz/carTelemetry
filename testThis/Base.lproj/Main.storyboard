@@ -32,6 +32,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-ob-DUE">
                                 <rect key="frame" x="20" y="545" width="354" height="30"/>
                                 <state key="normal" title="Start GPS Data"/>
+                                <connections>
+                                    <action selector="startGpsData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7f-lg-Mnp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cornering Gs:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmw-lx-LGq">
                                 <rect key="frame" x="20" y="28" width="149" height="21"/>
