@@ -26,6 +26,7 @@
     
     [self.locationManager requestWhenInUseAuthorization];
     //[self.locationManager startUpdatingLocation];
+    self.cycles = 1;
     
 
 }
@@ -43,17 +44,36 @@
 }
 
 
-- (IBAction)testAction:(id)sender {
-    self.textLabel.text = [NSString stringWithFormat:@"TESTING"];
-    [self.buttonTest setTitle:@"DONE CLICKED THIS" forState:UIControlStateNormal];
+- (IBAction)startCarTelemetry:(id)sender {
 
     if(self.motionManager.isDeviceMotionActive == NO){
+        [self.buttonStartCarTelemetry setTitle:@"Telemetry started" forState:UIControlStateNormal];
+        
         [UIApplication sharedApplication].idleTimerDisabled = YES;
         
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion * _Nullable motion, NSError * _Nullable error) {
+
+        //Record Max Values
+        if (fabs(motion.userAcceleration.x) > self.maxCorneringGs) {
+            self.maxCorneringGs = fabs(motion.userAcceleration.x);
+        }
+
+        //Record Averages
+        self.averageCorneringGsAccumulator += fabs(motion.userAcceleration.x);
+        self.averageCorneringGs = (self.averageCorneringGsAccumulator / self.cycles);
             
-            self.textLabel.text = [NSString stringWithFormat:@"Lat G:%.02f",fabs(motion.gravity.x)];
-            self.alignMark.transform = CGAffineTransformMakeRotation( atan2(motion.gravity.y, motion.gravity.x) );
+        //Present values
+        self.labelCorneringGs.text = [NSString stringWithFormat:@"%.02f",fabs(motion.userAcceleration.x)];
+        self.labelMaxCorneringGs.text = [NSString stringWithFormat:@"%.02f", self.maxCorneringGs];
+        self.labelAvgCorneringGs.text = [NSString stringWithFormat:@"%0.02f", self.averageCorneringGs];
+            
+        self.labelLongitudinalGs.text = [NSString stringWithFormat:@"%.02f",fabs(motion.userAcceleration.z)];
+        
+        //Increment cycle counter for averages computation®
+        self.cycles++;
+        
+            
+//            self.alignMark.transform = CGAffineTransformMakeRotation( atan2(motion.gravity.y, motion.gravity.x) );
         }];
     } else {
         [self.motionManager stopDeviceMotionUpdates];
@@ -62,6 +82,8 @@
 
     }
 }
+
+
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];

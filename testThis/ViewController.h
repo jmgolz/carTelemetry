@@ -12,20 +12,47 @@
 
 @interface ViewController : UIViewController<CLLocationManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) IBOutlet UIButton *buttonTest;
-
-@property (strong, nonatomic) CMMotionManager *motionManager;
+//Remove?
 @property (weak, nonatomic) IBOutlet UIView *alignMark;
 
+//Core location and motion service objects
 @property CLLocationManager *locationManager;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
-@property double cyclesCount;
-@property float gyroReadingAccumulator;
+//Cornering Gs text output labels
+@property (weak, nonatomic) IBOutlet UILabel *labelCorneringGs;
+@property (weak, nonatomic) IBOutlet UILabel *labelMaxCorneringGs;
+@property (weak, nonatomic) IBOutlet UILabel *labelAvgCorneringGs;
+
+//Braking and accel labels
+@property (weak, nonatomic) IBOutlet UILabel *labelLongitudinalGs;
+@property (weak, nonatomic) IBOutlet UILabel *labelMaxLongitudinalGs;
+@property (weak, nonatomic) IBOutlet UILabel *labelAvgLongitudinalGs;
+
+//GPS labels
+@property (weak, nonatomic) IBOutlet UILabel *labelMaxSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *labelSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *labelAvgSpeed;
+
+//Action buttons
+@property (weak, nonatomic) IBOutlet UIButton *buttonStartCarTelemetry;
+@property (weak, nonatomic) IBOutlet UIButton *buttonStartGpsRecording;
+
+//Data storage vars
+@property double averageCorneringGs;
+@property double averageCorneringGsAccumulator;
+@property double maxCorneringGs;
+
+@property double averageLongitudinalGs;
+@property double maxLongitudinalGs;
+
+
+//Misc
+@property int cycles;
 
 -(void)stopAllAppServices:(NSNotification *)notification;
 -(void)startAppServices:(NSNotification *)notification;
-- (IBAction)testAction:(id)sender;
+- (IBAction)startCarTelemetry:(id)sender;
 
 @end
 
