@@ -18,10 +18,6 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (weak, nonatomic) IBOutlet UIView *alignMark;
 
-@property (weak, nonatomic) NSString *jsonExample;
-@property (weak, nonatomic) NSDictionary *dictRoot;
-
-@property (strong, nonatomic) NSMutableArray *jsonObjectArrayFirstController;
 @property CLLocationManager *locationManager;
 
 @property double cyclesCount;
