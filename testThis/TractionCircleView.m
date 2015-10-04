@@ -12,9 +12,14 @@
 
 -(void)drawCircle{
     CGColorRef ref = [[UIColor clearColor] CGColor];
+    CGPoint dotCenter = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    
+    CGFloat circleRadius = sqrt((self.bounds.size.width / 2) * M_PI);
     
     self.tractionCircleLayer = [CAShapeLayer layer];
-    self.tractionCircle = [UIBezierPath bezierPathWithOvalInRect:self.bounds];
+    //self.tractionCircle = [UIBezierPath bezierPathWithOvalInRect:self.bounds];
+    
+    self.tractionCircle = [UIBezierPath bezierPathWithArcCenter:dotCenter radius:self.bounds.size.width / 2 startAngle:0 endAngle:2*M_PI clockwise:NO];
     
     self.tractionCircle.lineWidth = 5.0;
     [self.tractionCircleLayer setFillColor:ref];
@@ -26,6 +31,9 @@
 }
 
 -(void)drawCorneringDot:(double)xValue yValue:(double)yValue{
+    
+    //NSLog(@"orientation X:%.2f Y:%.2f", xValue, yValue);
+    NSLog(@"orientation X:%.2f FrameW:%.2f", xValue, self.bounds.size.width);
     
     CGPoint dotCenter = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     

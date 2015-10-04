@@ -29,7 +29,7 @@
     self.isGpsOn = NO;
     self.tractionCircleView.backgroundColor = [UIColor clearColor];
     [self.tractionCircleView drawCircle];
-    [self.tractionCircleView drawCorneringDot:0.0 yValue:0.0];
+    //[self.tractionCircleView drawCorneringDot:0.0 yValue:0.0];
     
     [self startCarTelemetry:nil];
 
@@ -59,7 +59,8 @@
         
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion * _Nullable motion, NSError * _Nullable error) {
 
-            NSLog(@"orientation X:%.2f Y:%.2f", motion.gravity.x, motion.gravity.z);
+            
+            [self.tractionCircleView drawCorneringDot:motion.gravity.x yValue:motion.gravity.z];
             
             //Record Max Values
         if (fabs(motion.userAcceleration.x) > self.maxCorneringGs) {
