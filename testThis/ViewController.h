@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import <CoreLocation/CoreLocation.h>
+#import "TractionCircleView.h"
 
 @interface ViewController : UIViewController<CLLocationManagerDelegate>
 
@@ -50,13 +51,14 @@
 @property double averageSpeedAccumulator;
 @property double maxSpeed;
 
+@property (weak, nonatomic) IBOutlet TractionCircleView *tractionCircleView;
 
 //Misc
 @property int numCyclesTelemetryReadings;
 @property int numCyclesGpsReadings;
 @property int isGpsOn;
 
-@property (weak, nonatomic) IBOutlet UIView *tractionCircleView;
+
 
 
 -(void)stopAllAppServices:(NSNotification *)notification;

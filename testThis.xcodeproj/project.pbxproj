@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8472F84A1BB252D900EFCD7F /* jsonData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8472F8491BB252D900EFCD7F /* jsonData.plist */; settings = {ASSET_TAGS = (); }; };
 		848564B71BB37D4B00CC3BDD /* SecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848564B61BB37D4B00CC3BDD /* SecondController.m */; settings = {ASSET_TAGS = (); }; };
+		84E8585B1BC1915D009D3E12 /* TractionCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8585A1BC1915D009D3E12 /* TractionCircleView.m */; settings = {ASSET_TAGS = (); }; };
 		84E88A241BB4B80100E29A63 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E88A231BB4B80100E29A63 /* CoreLocation.framework */; };
 		E516C3F51BB1BFF2004D700C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F41BB1BFF2004D700C /* main.m */; };
 		E516C3F81BB1BFF2004D700C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E516C3F71BB1BFF2004D700C /* AppDelegate.m */; };
@@ -43,6 +44,8 @@
 		8472F8491BB252D900EFCD7F /* jsonData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = jsonData.plist; sourceTree = "<group>"; };
 		848564B51BB37D4B00CC3BDD /* SecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondController.h; sourceTree = "<group>"; };
 		848564B61BB37D4B00CC3BDD /* SecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondController.m; sourceTree = "<group>"; };
+		84E858591BC1915D009D3E12 /* TractionCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TractionCircleView.h; sourceTree = "<group>"; };
+		84E8585A1BC1915D009D3E12 /* TractionCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TractionCircleView.m; sourceTree = "<group>"; };
 		84E88A231BB4B80100E29A63 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E516C3F01BB1BFF2004D700C /* testThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E516C3F41BB1BFF2004D700C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				E516C3F91BB1BFF2004D700C /* ViewController.h */,
 				E516C3FA1BB1BFF2004D700C /* ViewController.m */,
 				E516C3FC1BB1BFF2004D700C /* Main.storyboard */,
+				84E858591BC1915D009D3E12 /* TractionCircleView.h */,
+				84E8585A1BC1915D009D3E12 /* TractionCircleView.m */,
 				E516C4021BB1BFF2004D700C /* Assets.xcassets */,
 				E516C4041BB1BFF2004D700C /* LaunchScreen.storyboard */,
 				E516C4071BB1BFF2004D700C /* Info.plist */,
@@ -306,6 +311,7 @@
 			files = (
 				E516C3FB1BB1BFF2004D700C /* ViewController.m in Sources */,
 				E516C4011BB1BFF2004D700C /* testThis.xcdatamodeld in Sources */,
+				84E8585B1BC1915D009D3E12 /* TractionCircleView.m in Sources */,
 				848564B71BB37D4B00CC3BDD /* SecondController.m in Sources */,
 				E516C3F81BB1BFF2004D700C /* AppDelegate.m in Sources */,
 				E516C3F51BB1BFF2004D700C /* main.m in Sources */,
