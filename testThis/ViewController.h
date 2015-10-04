@@ -56,6 +56,9 @@
 @property int numCyclesGpsReadings;
 @property int isGpsOn;
 
+@property (weak, nonatomic) IBOutlet UIView *tractionCircleView;
+
+
 -(void)stopAllAppServices:(NSNotification *)notification;
 -(void)startAppServices:(NSNotification *)notification;
 
