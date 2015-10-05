@@ -28,13 +28,18 @@
     self.numCyclesTelemetryReadings = 1;
     self.isGpsOn = NO;
     self.tractionCircleView.backgroundColor = [UIColor clearColor];
-    [self.tractionCircleView drawCircle];
+    //[self.tractionCircleView drawCircle];
     //[self.tractionCircleView drawCorneringDot:0.0 yValue:0.0];
     
     [self startCarTelemetry:nil];
 
    
 
+}
+
+-(void)viewDidLayoutSubviews{
+    [self.tractionCircleView drawCircle];
+    [self.tractionCircleView drawCorneringDot:0.0 yValue:0.0];
 }
 
 - (void)didReceiveMemoryWarning {

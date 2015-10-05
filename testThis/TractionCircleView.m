@@ -14,8 +14,7 @@
     CGColorRef ref = [[UIColor clearColor] CGColor];
     CGPoint dotCenter = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     
-    CGFloat circleRadius = sqrt((self.bounds.size.width / 2) * M_PI);
-    
+
     self.tractionCircleLayer = [CAShapeLayer layer];
     //self.tractionCircle = [UIBezierPath bezierPathWithOvalInRect:self.bounds];
     
