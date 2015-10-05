@@ -31,10 +31,14 @@
 
 -(void)drawCorneringDot:(double)xValue yValue:(double)yValue{
     
-    //NSLog(@"orientation X:%.2f Y:%.2f", xValue, yValue);
-    NSLog(@"orientation X:%.2f FrameW:%.2f", xValue, self.bounds.size.width);
+    double corneringDotX = self.bounds.size.width - (self.bounds.size.width * xValue);
+    double corneringDotY = self.bounds.size.height - (self.bounds.size.height * yValue);
     
-    CGPoint dotCenter = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    //NSLog(@"orientation X:%.2f Y:%.2f", xValue, yValue);
+    //NSLog(@"orientation X:%.2f FrameW:%.2f calculated: %.2f", xValue, self.bounds.size.width, corneringDotX);
+    NSLog(@"orientation X:%.2f FrameW:%.2f calculated: %.2f", yValue, self.bounds.size.height, corneringDotY);
+    
+    CGPoint dotCenter = CGPointMake(corneringDotX, corneringDotY);
     
     self.corneringDotLayer = [CAShapeLayer layer];
 //    self.corneringDot      = [UIBezierPath bezierPathWithArcCenter:self.center radius:10.0 startAngle:0 endAngle:2*M_PI clockwise:NO];
@@ -45,11 +49,17 @@
     [self.corneringDotLayer setStrokeColor:[[UIColor redColor] CGColor]];
     self.corneringDot.lineWidth = 2.0;
     
+//    CGAffineTransform moveDot = CGAffineTransformMakeTranslation(corneringDotX, corneringDotY);
+//    self.corneringDotLayer.transform = moveDot;
+    CGAffineTransformTranslate(self.transform, corneringDotX, corneringDotY);
+    
     //[self.corneringDot stroke];
     //[self.corneringDot fill];
     
     [self.corneringDotLayer setPath:[self.corneringDot CGPath]];
     [[self layer] addSublayer:self.corneringDotLayer];
+    
+    
 }
 
 

@@ -29,7 +29,7 @@
     self.isGpsOn = NO;
     self.tractionCircleView.backgroundColor = [UIColor clearColor];
     //[self.tractionCircleView drawCircle];
-    //[self.tractionCircleView drawCorneringDot:0.0 yValue:0.0];
+    //[self.tractionCircleView drawCornerinxgDot:0.0 yValue:0.0];
     
     [self startCarTelemetry:nil];
 
@@ -87,6 +87,9 @@
         self.numCyclesTelemetryReadings++;
 //            self.alignMark.transform = CGAffineTransformMakeRotation( atan2(motion.gravity.y, motion.gravity.x) );
         }];
+        
+        [self.view setNeedsDisplay];
+        
     } else {
         [self.motionManager stopDeviceMotionUpdates];
         [UIApplication sharedApplication].idleTimerDisabled = NO;
